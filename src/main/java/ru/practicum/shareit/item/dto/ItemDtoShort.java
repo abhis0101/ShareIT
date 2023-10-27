@@ -11,5 +11,4 @@ public class ItemDtoShort {
     private Long id;
     @NotBlank
     private String name;
-
 }

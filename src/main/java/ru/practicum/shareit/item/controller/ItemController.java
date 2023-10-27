@@ -17,6 +17,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/items")
 public class ItemController {
+
     private final ItemService itemService;
 
     @PostMapping
@@ -57,4 +58,5 @@ public class ItemController {
                                   @RequestBody @Valid CommentRequestDto commentRequestDto) {
         return itemService.saveComment(itemId, userId, commentRequestDto);
     }
+
 }

@@ -8,7 +8,6 @@ import javax.validation.constraints.NotBlank;
 @Data
 @Builder
 public class UserDtoShort {
-
     private Long id;
     @NotBlank
     private String name;

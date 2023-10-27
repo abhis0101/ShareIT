@@ -14,6 +14,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/users")
 public class UserController {
+
     private final UserService userService;
 
     @GetMapping
@@ -45,4 +46,5 @@ public class UserController {
         log.info("Received user with ID: " + id);
         return userService.getUserById(id);
     }
+
 }

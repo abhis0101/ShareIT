@@ -36,4 +36,5 @@ public class CommentMapper {
     public static List<CommentDto> listToDtoList(Collection<Comment> comments) {
         return comments.stream().map(CommentMapper::toCommentDto).collect(Collectors.toList());
     }
+
 }
