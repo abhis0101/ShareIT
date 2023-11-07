@@ -18,14 +18,14 @@ public class ErrorHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleNotFoundExceptions(final RuntimeException e) {
         log.error("Model Not Found Exception");
-        return new ErrorResponse("No data!", e.getMessage());
+        return new ErrorResponse(e.getMessage(), e.getMessage());
     }
 
     @ExceptionHandler({EmailAlreadyExistException.class})
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErrorResponse handleConflictException(final RuntimeException e) {
         log.error("Email Already Exists Exception");
-        return new ErrorResponse("Data already exists!", e.getMessage());
+        return new ErrorResponse("Email already exists!", e.getMessage());
     }
 
     @ExceptionHandler({InvalidBookingException.class})
