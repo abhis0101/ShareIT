@@ -1,13 +1,11 @@
 package ru.practicum.shareit.item.mapper;
 
 import lombok.experimental.UtilityClass;
-import ru.practicum.shareit.booking.dto.BookingShortDto;
-import ru.practicum.shareit.item.comment.dto.CommentDto;
 import ru.practicum.shareit.item.dto.ItemDto;
-import ru.practicum.shareit.item.dto.ItemDtoResponse;
 import ru.practicum.shareit.item.dto.ItemDtoShort;
 import ru.practicum.shareit.item.model.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,6 +18,8 @@ public class ItemMapper {
                 .name(item.getName())
                 .description(item.getDescription())
                 .available(item.getAvailable())
+                .requestId(item.getRequest() != null ? item.getRequest().getId() : null)
+                .comments(new ArrayList<>())
                 .build();
     }
 
@@ -36,21 +36,9 @@ public class ItemMapper {
         return ItemDtoShort.builder()
                 .id(item.getId())
                 .name(item.getName())
-                .build();
-    }
-
-    public static ItemDtoResponse toItemDtoResponse(Item item,
-                                                    BookingShortDto nextBooking,
-                                                    BookingShortDto lastBooking,
-                                                    List<CommentDto> comments) {
-        return ItemDtoResponse.builder()
-                .id(item.getId())
-                .name(item.getName())
                 .description(item.getDescription())
                 .available(item.getAvailable())
-                .lastBooking(lastBooking)
-                .nextBooking(nextBooking)
-                .comments(comments)
+                .requestId(item.getRequest().getId())
                 .build();
     }
 

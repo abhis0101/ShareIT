@@ -37,8 +37,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserDto createUser(UserDto userDto) {
+        User newUser = toUser(userDto);
+        checksUser(newUser, userDto);
         log.info("User saved.");
-        return toUserDto(userRepository.save(toUser(userDto)));
+        return toUserDto(userRepository.save(newUser));
     }
 
     @Override
